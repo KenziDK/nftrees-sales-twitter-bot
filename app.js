@@ -13,7 +13,7 @@ function formatAndSendTweet(twitterData) {
             : ` ${twitterData.tokenSymbol}`
     );
 
-    const tweetText = `${twitterData.tokenName} was purchased for ${formattedTokenPrice}${formattedPriceSymbol} ($${formattedUsdPrice}) by ${twitterData.buyersAddressShort} from ${twitterData.sellersAddressShort}. #${process.env.OPENSEA_COLLECTION_SLUG} #ethereum ${twitterData.openseaLink}`;
+    const tweetText = `${twitterData.tokenName} was purchased for ${formattedTokenPrice}${formattedPriceSymbol} ($${formattedUsdPrice}) by ${twitterData.buyersAddressShort} from ${twitterData.sellersAddressShort}. #treeverse #ethereum ${twitterData.openseaLink}`;
 
     console.log('tweet text', tweetText);
 
@@ -79,7 +79,7 @@ function processAllSales(lastMinute, latestSalesData) {
             break
         }
     }
-    console.log(`${sendTwitterData.length} sales in the last minute...`)
+    console.log(`${sendTwitterData.length} ${process.env.OPENSEA_COLLECTION_SLUG} sales in the last minute...`)
     return sendTwitterData;
 }
 
