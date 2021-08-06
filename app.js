@@ -39,7 +39,9 @@ async function getLastestSaleData(collection) {
             "sortBy": "LAST_SALE_DATE"
         }
     }
-    let res = await axios.post('https://api.opensea.io/graphql/', postData);
+    let res = await axios.post('https://api.opensea.io/graphql/', postData, {
+        headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
+    });
     return res.data
 }
 
@@ -79,7 +81,7 @@ function processAllSales(lastMinute, latestSalesData) {
             break
         }
     }
-    console.log(`${sendTwitterData.length} ${process.env.OPENSEA_COLLECTION_SLUG} sales in the last minute...`)
+    console.log(`${sendTwitterData.length} sales in the last minute...`)
     return sendTwitterData;
 }
 
